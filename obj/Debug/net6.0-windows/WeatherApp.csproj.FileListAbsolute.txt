@@ -1,0 +1,17 @@
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.exe
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.deps.json
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.runtimeconfig.json
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.AssemblyReference.cache
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.GenerateResource.cache
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfoInputs.cache
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.AssemblyInfo.cs
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.dll
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\refint\WeatherApp.dll
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.pdb
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
