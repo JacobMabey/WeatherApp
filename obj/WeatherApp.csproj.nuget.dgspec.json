@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joshua\\OneDrive\\Second Year\\Fall\\Projects\\WeatherApp\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {}
+    "C:\\Users\\Jacob Mabey\\Documents\\2022FallClasses\\Intro to Software Projects\\WeatherApp\\WeatherApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joshua\\OneDrive\\Second Year\\Fall\\Projects\\WeatherApp\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {
+    "C:\\Users\\Jacob Mabey\\Documents\\2022FallClasses\\Intro to Software Projects\\WeatherApp\\WeatherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joshua\\OneDrive\\Second Year\\Fall\\Projects\\WeatherApp\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+        "projectUniqueName": "C:\\Users\\Jacob Mabey\\Documents\\2022FallClasses\\Intro to Software Projects\\WeatherApp\\WeatherApp.csproj",
         "projectName": "WeatherApp",
-        "projectPath": "C:\\Users\\Joshua\\OneDrive\\Second Year\\Fall\\Projects\\WeatherApp\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
-        "packagesPath": "C:\\Users\\Joshua\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joshua\\OneDrive\\Second Year\\Fall\\Projects\\WeatherApp\\WeatherApp\\WeatherApp\\obj\\",
+        "projectPath": "C:\\Users\\Jacob Mabey\\Documents\\2022FallClasses\\Intro to Software Projects\\WeatherApp\\WeatherApp.csproj",
+        "packagesPath": "C:\\Users\\Jacob Mabey\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jacob Mabey\\Documents\\2022FallClasses\\Intro to Software Projects\\WeatherApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Joshua\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Jacob Mabey\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
