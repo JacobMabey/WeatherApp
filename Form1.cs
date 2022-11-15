@@ -5,7 +5,7 @@ namespace WeatherApp
         public Form1()
         {
             InitializeComponent();
-            WeatherReceiver.Initialize("sandy", eUnits.IMPERIAL);
+            WeatherReceiver.Initialize("Draper", eUnits.IMPERIAL);
             string text = "";
             text += WeatherReceiver.City + Environment.NewLine;
             text += WeatherReceiver.Coords[0] + "  |  " + WeatherReceiver.Coords[1] + Environment.NewLine;

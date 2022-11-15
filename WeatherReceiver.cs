@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json.Nodes;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace WeatherApp
 {
@@ -199,22 +200,45 @@ namespace WeatherApp
         {
             try
             {
+                City = city.ToLower().Trim(' ', ',', '.', '/', '(', ')', '\'', '\"');
                 Units = units;
                 weatherJson = GetCityWeatherJSON(city);
                 double lat = double.Parse(weatherJson["coord"]["lat"].ToString());
                 double lon = double.Parse(weatherJson["coord"]["lon"].ToString());
                 forecastJson = GetCityForecastJSON(lat, lon);
                 InitializeForecastList();
+                Initialized = true;
             } catch
             {
                 City = "";
+                Units = eUnits.METRIC;
                 weatherJson = null;
                 forecastJson = null;
                 Initialized= false;
                 return Initialized;
             }
-            City = city.ToLower().Trim(' ', ',', '.', '/', '(', ')', '\'', '\"');
-            Initialized= true;
+            return Initialized;
+        }
+        public static bool Initialize(double lat, double lon, eUnits units)
+        {
+            try
+            {
+                Units = units;
+                weatherJson = GetCityWeatherJSON(lat, lon);
+                City = weatherJson["name"].ToString();
+                forecastJson = GetCityForecastJSON(lat, lon);
+                InitializeForecastList();
+                Initialized = true;
+            }
+            catch
+            {
+                City = "";
+                Units = eUnits.METRIC;
+                weatherJson = null;
+                forecastJson = null;
+                Initialized = false;
+                return Initialized;
+            }
             return Initialized;
         }
 
@@ -246,13 +270,31 @@ namespace WeatherApp
          * Receives weather JSON data for current day info
          */
         #pragma warning disable SYSLIB0014
-        private static JsonNode GetCityWeatherJSON(string city)
+        private static JsonNode GetCityWeatherJSON(string city, string state, string country)
         {
             //Get current weather data
-            //city = "chicago";
-            var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?appid=910b890df0a91b53bc4afe41a18a08e3&q={city}&units={UnitsString}";
+            var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?appid=910b890df0a91b53bc4afe41a18a08e3&q={city}" + (state.Equals("") ? "" : ","+state) + (country.Equals("") ? "" : "," + country) + $"&units={UnitsString}";
             var result = "";
             
+            var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
+            httpWeatherRequest.Accept = "application/json";
+            var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpWeatherResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
+            return ParseJSON(result);
+        }
+        private static JsonNode GetCityWeatherJSON(string city, string country) => GetCityWeatherJSON(city, "", country);
+        private static JsonNode GetCityWeatherJSON(string city) => GetCityWeatherJSON(city, "", "");
+
+        #pragma warning disable SYSLIB0014
+        private static JsonNode GetCityWeatherJSON(double lat, double lon)
+        {
+            //Get current weather data
+            var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=910b890df0a91b53bc4afe41a18a08e3&units={UnitsString}";
+            var result = "";
+
             var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
             httpWeatherRequest.Accept = "application/json";
             var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
