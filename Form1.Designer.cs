@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.CitySearchTextBox = new System.Windows.Forms.TextBox();
+            this.DisplayedCityName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +43,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -62,11 +67,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -77,25 +77,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // CitySearchTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(888, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "City Search";
-            this.textBox1.Size = new System.Drawing.Size(150, 39);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.CitySearchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CitySearchTextBox.Location = new System.Drawing.Point(888, 18);
+            this.CitySearchTextBox.Name = "CitySearchTextBox";
+            this.CitySearchTextBox.PlaceholderText = "City Search";
+            this.CitySearchTextBox.Size = new System.Drawing.Size(150, 39);
+            this.CitySearchTextBox.TabIndex = 0;
+            this.CitySearchTextBox.TextChanged += new System.EventHandler(this.CitySearchTextBox_TextChanged);
+            this.CitySearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySearchTextBox_KeyDown);
+            this.CitySearchTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
-            // label1
+            // DisplayedCityName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(377, 67);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "City Name Here";
+            this.DisplayedCityName.AutoSize = true;
+            this.DisplayedCityName.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DisplayedCityName.Location = new System.Drawing.Point(12, 18);
+            this.DisplayedCityName.Name = "DisplayedCityName";
+            this.DisplayedCityName.Size = new System.Drawing.Size(377, 67);
+            this.DisplayedCityName.TabIndex = 2;
+            this.DisplayedCityName.Text = "City Name Here";
             // 
             // pictureBox1
             // 
@@ -176,9 +178,9 @@
             this.label8.Font = new System.Drawing.Font("Segoe UI", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(792, 67);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(186, 120);
+            this.label8.Size = new System.Drawing.Size(182, 120);
             this.label8.TabIndex = 10;
-            this.label8.Text = "72*";
+            this.label8.Text = "72°";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
@@ -265,6 +267,61 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1180, 575);
             this.tableLayoutPanel1.TabIndex = 18;
+            // 
+            // label30
+            // 
+            this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label30.Location = new System.Drawing.Point(740, 504);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(290, 41);
+            this.label30.TabIndex = 44;
+            this.label30.Text = "Temp: 62* (42* | 71*)";
+            // 
+            // label29
+            // 
+            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.Location = new System.Drawing.Point(740, 407);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(290, 41);
+            this.label29.TabIndex = 43;
+            this.label29.Text = "Temp: 62* (42* | 71*)";
+            // 
+            // label28
+            // 
+            this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label28.Location = new System.Drawing.Point(740, 312);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(290, 41);
+            this.label28.TabIndex = 42;
+            this.label28.Text = "Temp: 62* (42* | 71*)";
+            // 
+            // label27
+            // 
+            this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label27.Location = new System.Drawing.Point(740, 217);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(290, 41);
+            this.label27.TabIndex = 41;
+            this.label27.Text = "Temp: 62* (42* | 71*)";
+            // 
+            // label26
+            // 
+            this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(740, 122);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(290, 41);
+            this.label26.TabIndex = 40;
+            this.label26.Text = "Temp: 62* (42* | 71*)";
             // 
             // pictureBox5
             // 
@@ -471,61 +528,6 @@
             this.label25.TabIndex = 39;
             this.label25.Text = "Temp: 62* (42* | 71*)";
             // 
-            // label26
-            // 
-            this.label26.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(740, 122);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(290, 41);
-            this.label26.TabIndex = 40;
-            this.label26.Text = "Temp: 62* (42* | 71*)";
-            // 
-            // label27
-            // 
-            this.label27.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(740, 217);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(290, 41);
-            this.label27.TabIndex = 41;
-            this.label27.Text = "Temp: 62* (42* | 71*)";
-            // 
-            // label28
-            // 
-            this.label28.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(740, 312);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(290, 41);
-            this.label28.TabIndex = 42;
-            this.label28.Text = "Temp: 62* (42* | 71*)";
-            // 
-            // label29
-            // 
-            this.label29.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.Location = new System.Drawing.Point(740, 407);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(290, 41);
-            this.label29.TabIndex = 43;
-            this.label29.Text = "Temp: 62* (42* | 71*)";
-            // 
-            // label30
-            // 
-            this.label30.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(740, 504);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(290, 41);
-            this.label30.TabIndex = 44;
-            this.label30.Text = "Temp: 62* (42* | 71*)";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -544,8 +546,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.DisplayedCityName);
+            this.Controls.Add(this.CitySearchTextBox);
             this.Name = "Form1";
             this.Text = "Weather Application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -564,8 +566,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private Label label1;
+        private TextBox CitySearchTextBox;
+        private Label DisplayedCityName;
         private PictureBox pictureBox1;
         private Label label2;
         private Label label3;
