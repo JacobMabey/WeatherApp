@@ -38,8 +38,8 @@ namespace WeatherApp
         }
 
         // This is validation so you cant type numbers into the city search
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e) {
-            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) {
+        private void TextBox1_KeyPress(object sender, KeyPressEventArgs e) {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar)) {
                 e.Handled = true;
             }
         }
@@ -48,6 +48,7 @@ namespace WeatherApp
         private void CitySearchTextBox_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 DisplayedCityName.Text = CitySearchTextBox.Text;
+                CitySearchTextBox.Text = "";
             }
         }
 

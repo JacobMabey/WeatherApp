@@ -87,7 +87,7 @@
             this.CitySearchTextBox.TabIndex = 0;
             this.CitySearchTextBox.TextChanged += new System.EventHandler(this.CitySearchTextBox_TextChanged);
             this.CitySearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySearchTextBox_KeyDown);
-            this.CitySearchTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.CitySearchTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_KeyPress);
             // 
             // DisplayedCityName
             // 
