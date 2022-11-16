@@ -79,6 +79,8 @@
             // 
             // CitySearchTextBox
             // 
+            this.CitySearchTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.CitySearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CitySearchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CitySearchTextBox.Location = new System.Drawing.Point(851, 25);
             this.CitySearchTextBox.Name = "CitySearchTextBox";
