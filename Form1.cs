@@ -48,7 +48,7 @@ namespace WeatherApp
         private void CitySearchTextBox_KeyDown(object sender, KeyEventArgs e) {
             if (e.KeyCode == Keys.Enter) {
                 DisplayedCityName.Text = CitySearchTextBox.Text;
-                CitySearchTextBox.Text = "";
+                CitySearchTextBox.Text = null;
             }
         }
 

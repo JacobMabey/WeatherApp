@@ -80,10 +80,10 @@
             // CitySearchTextBox
             // 
             this.CitySearchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CitySearchTextBox.Location = new System.Drawing.Point(888, 18);
+            this.CitySearchTextBox.Location = new System.Drawing.Point(851, 25);
             this.CitySearchTextBox.Name = "CitySearchTextBox";
             this.CitySearchTextBox.PlaceholderText = "City Search";
-            this.CitySearchTextBox.Size = new System.Drawing.Size(150, 39);
+            this.CitySearchTextBox.Size = new System.Drawing.Size(240, 39);
             this.CitySearchTextBox.TabIndex = 0;
             this.CitySearchTextBox.TextChanged += new System.EventHandler(this.CitySearchTextBox_TextChanged);
             this.CitySearchTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CitySearchTextBox_KeyDown);
