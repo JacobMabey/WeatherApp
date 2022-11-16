@@ -219,6 +219,10 @@ namespace WeatherApp
             }
             return Initialized;
         }
+
+        /**
+         * Initializes API with latitude & longitude coordinates and units of measurement
+         */
         public static bool Initialize(double lat, double lon, eUnits units)
         {
             try
