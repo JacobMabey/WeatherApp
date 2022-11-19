@@ -75,14 +75,40 @@ namespace WeatherApp
         }
 
         /**
-         * Gets current wind speed in mph
+         * Gets current air pressure
          */
-        public static double WindSpeed
+        public static int Pressure
         {
             get
             {
-                if (weatherJson == null) return 0.0;
-                double speed = double.Parse(weatherJson["wind"]["speed"].ToString());
+                if (weatherJson == null) return 50;
+                int humidity = int.Parse(weatherJson["main"]["pressure"].ToString());
+                return humidity;
+            }
+        }
+
+        /**
+         * Gets current humidity
+         */
+        public static int Visibility
+        {
+            get
+            {
+                if (weatherJson == null) return 50;
+                int humidity = int.Parse(weatherJson["visibility"].ToString());
+                return humidity;
+            }
+        }
+
+        /**
+         * Gets current wind speed in mph
+         */
+        public static int WindSpeed
+        {
+            get
+            {
+                if (weatherJson == null) return 0;
+                int speed = (int)Math.Round(double.Parse(weatherJson["wind"]["speed"].ToString()));
                 return speed;
             }
         }
@@ -97,6 +123,38 @@ namespace WeatherApp
                 if (weatherJson == null) return 0;
                 int dir = int.Parse(weatherJson["wind"]["deg"].ToString());
                 return dir;
+            }
+        }
+
+        /**
+         * Gets wind cardinal Direction
+         */
+        public static String WindCardinalDirection
+        {
+            get
+            {
+                String wind = "N";
+                int windDir = WindDirection;
+                if ((windDir >= 338 && windDir <= 360) || (windDir >= 0 && windDir <= 22))
+                    wind = "N";
+                else if (windDir >= 23 && windDir <= 67)
+                    wind = "NE";
+                else if (windDir >= 68 && windDir <= 112)
+                    wind = "E";
+                else if (windDir >= 113 && windDir <= 157)
+                    wind = "SE";
+                else if (windDir >= 158 && windDir <= 202)
+                    wind = "S";
+                else if (windDir >= 203 && windDir <= 247)
+                    wind = "SW";
+                else if (windDir >= 248 && windDir <= 292)
+                    wind = "W";
+                else if (windDir >= 293 && windDir <= 337)
+                    wind = "NW";
+                else
+                    wind = "NA";
+
+                return wind;
             }
         }
 
@@ -146,48 +204,48 @@ namespace WeatherApp
         /**
          * Gets current Temperature
          */
-        public static double Temperature
+        public static int Temperature
         {
             get
             {
                 if (weatherJson == null) return 0;
-                double temp = double.Parse(weatherJson["main"]["temp"].ToString());
+                int temp = (int)Math.Round(double.Parse(weatherJson["main"]["temp"].ToString()));
                 return temp;
             }
         }
         /**
          * Gets current Lowest Temperature
          */
-        public static double TemperatureLow
+        public static int TemperatureLow
         {
             get
             {
                 if (weatherJson == null) return 0;
-                double temp = double.Parse(weatherJson["main"]["temp_min"].ToString());
+                int temp = (int)Math.Round(double.Parse(weatherJson["main"]["temp_min"].ToString()));
                 return temp;
             }
         }
         /**
          * Gets current Highest Temperature
          */
-        public static double TemperatureHigh
+        public static int TemperatureHigh
         {
             get
             {
                 if (weatherJson == null) return 0;
-                double temp = double.Parse(weatherJson["main"]["temp_max"].ToString());
+                int temp = (int)Math.Round(double.Parse(weatherJson["main"]["temp_max"].ToString()));
                 return temp;
             }
         }
         /**
          * Gets current feels-like Temperature
          */
-        public static double TemperatureFeelsLike
+        public static int TemperatureFeelsLike
         {
             get
             {
                 if (weatherJson == null) return 0;
-                double temp = double.Parse(weatherJson["main"]["feels_like"].ToString());
+                int temp = (int)Math.Round(double.Parse(weatherJson["main"]["feels_like"].ToString()));
                 return temp;
             }
         }
@@ -198,23 +256,28 @@ namespace WeatherApp
          */
         public static bool Initialize(string city, eUnits units)
         {
+            City = "";
+            Units = units;
+            weatherJson = null;
+            forecastJson = null;
+            Initialized = false;
             try
             {
-                City = city.ToLower().Trim(' ', ',', '.', '/', '(', ')', '\'', '\"');
-                Units = units;
                 weatherJson = GetCityWeatherJSON(city);
                 double lat = double.Parse(weatherJson["coord"]["lat"].ToString());
                 double lon = double.Parse(weatherJson["coord"]["lon"].ToString());
                 forecastJson = GetCityForecastJSON(lat, lon);
                 InitializeForecastList();
+                City = city.ToLower().Trim(' ', ',', '.', '/', '(', ')', '\'', '\"');
+                Units = units;
                 Initialized = true;
             } catch
             {
-                City = "";
-                Units = eUnits.METRIC;
                 weatherJson = null;
                 forecastJson = null;
-                Initialized= false;
+                City = "";
+                Units = eUnits.METRIC;
+                Initialized = false;
                 return Initialized;
             }
             return Initialized;
@@ -225,21 +288,26 @@ namespace WeatherApp
          */
         public static bool Initialize(double lat, double lon, eUnits units)
         {
+            City = "";
+            Units = units;
+            weatherJson = null;
+            forecastJson = null;
+            Initialized = false;
             try
             {
-                Units = units;
                 weatherJson = GetCityWeatherJSON(lat, lon);
                 City = weatherJson["name"].ToString();
                 forecastJson = GetCityForecastJSON(lat, lon);
                 InitializeForecastList();
+                Units = units;
                 Initialized = true;
             }
-            catch
+            catch (ArgumentException)
             {
-                City = "";
-                Units = eUnits.METRIC;
                 weatherJson = null;
                 forecastJson = null;
+                City = "";
+                Units = eUnits.METRIC;
                 Initialized = false;
                 return Initialized;
             }
@@ -254,7 +322,8 @@ namespace WeatherApp
         {
             if (forecastJson == null) return false;
 
-            for (int i = 0; i < 5; i++)
+            ForecastDays.Clear();
+            for (int i = 0; i < 6; i++)
             {
                 double temp = double.Parse(forecastJson["list"][i]["main"]["temp"].ToString());
                 double tempLow = double.Parse(forecastJson["list"][i]["main"]["temp_min"].ToString());
@@ -287,7 +356,10 @@ namespace WeatherApp
             {
                 result = streamReader.ReadToEnd();
             }
-            return ParseJSON(result);
+            JsonNode resultNode = ParseJSON(result);
+            if (resultNode["cod"].ToString().Equals("404"))
+                throw new ArgumentException(resultNode["message"].ToString());
+            return resultNode;
         }
         private static JsonNode GetCityWeatherJSON(string city, string country) => GetCityWeatherJSON(city, "", country);
         private static JsonNode GetCityWeatherJSON(string city) => GetCityWeatherJSON(city, "", "");

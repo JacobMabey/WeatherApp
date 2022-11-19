@@ -20,65 +20,11 @@ namespace WeatherApp
 
         public void InitializeLayout()
         {
+            String city = "salt lake city";
             eUnits units = eUnits.IMPERIAL;
-            WeatherReceiver.Initialize("Draper", units);
-            DisplayedCityName.Text = WeatherReceiver.City;
-            label8.Text = WeatherReceiver.Temperature.ToString() + "°";
-            label2.Text = WeatherReceiver.WeatherDescription;
-            label3.Text = "Clouds: " + WeatherReceiver.CloudRatio.ToString() + "%";
-            label9.Text = WeatherReceiver.TemperatureLow.ToString() + "°" + "/" + WeatherReceiver.TemperatureHigh.ToString() + "°";
-            label10.Text = "Feels Like: " + WeatherReceiver.TemperatureFeelsLike.ToString() + "°";
-            label11.Text = "Sunrise: " + WeatherReceiver.SunriseTime;
-            label12.Text = "Sunset: " + WeatherReceiver.SunsetTime;
-            label4.Text = "Wind: " + WeatherReceiver.WindSpeed.ToString() + (units == eUnits.IMPERIAL ? "mph" : "kph") +
-                "  Wind Direction:" + WeatherReceiver.WindDirection.ToString() + "°";
-            //pressure here
-            //visibiltiy
-            label6.Text = "Humidity: " + WeatherReceiver.Humidity.ToString() + "%";
-            label19.Text = WeatherReceiver.ForecastDays.ElementAt(0).WeatherDescription;
-            label25.Text = "Temp: " + WeatherReceiver.ForecastDays.ElementAt(0).Temperature.ToString() + "° " + " ( "+ WeatherReceiver.ForecastDays.ElementAt(0).TemperatureLow + "° / " + WeatherReceiver.ForecastDays.ElementAt(0).TemperatureHigh + "° ) ";
+            WeatherReceiver.Initialize(city, units);
 
-            label20.Text = WeatherReceiver.ForecastDays.ElementAt(1).WeatherDescription;
-            label26.Text = "Temp: " + WeatherReceiver.ForecastDays.ElementAt(1).Temperature.ToString() + "° " + " ( "+ WeatherReceiver.ForecastDays.ElementAt(1).TemperatureLow + "° / " + WeatherReceiver.ForecastDays.ElementAt(1).TemperatureHigh + "° ) ";
-            
-            label21.Text = WeatherReceiver.ForecastDays.ElementAt(2).WeatherDescription;
-            label27.Text = "Temp: " + WeatherReceiver.ForecastDays.ElementAt(2).Temperature.ToString() + "° " + " ( "+ WeatherReceiver.ForecastDays.ElementAt(2).TemperatureLow + "° / " + WeatherReceiver.ForecastDays.ElementAt(2).TemperatureHigh + "° ) ";
-           
-            label22.Text = WeatherReceiver.ForecastDays.ElementAt(3).WeatherDescription;
-            label28.Text = "Temp: " + WeatherReceiver.ForecastDays.ElementAt(3).Temperature.ToString() + "° " + " ( "+ WeatherReceiver.ForecastDays.ElementAt(3).TemperatureLow + "° / " + WeatherReceiver.ForecastDays.ElementAt(3).TemperatureHigh + "° ) ";
-           
-            label23.Text = WeatherReceiver.ForecastDays.ElementAt(4).WeatherDescription;
-            label29.Text = "Temp: " + WeatherReceiver.ForecastDays.ElementAt(4).Temperature.ToString() + "° " + " ( "+ WeatherReceiver.ForecastDays.ElementAt(4).TemperatureLow + "° / " + WeatherReceiver.ForecastDays.ElementAt(4).TemperatureHigh + "° ) ";
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
+            UpdateLayout(units);
         }
 
         // This is validation so you cant type numbers into the city search
@@ -88,17 +34,64 @@ namespace WeatherApp
             }
         }
 
-        // If you press enter do stuff
-        private void CitySearchTextBox_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
-                DisplayedCityName.Text = CitySearchTextBox.Text;
-                CitySearchTextBox.Text = "";
-            }
+        private void btnCitySearch_Click(object sender, EventArgs e)
+        {
+            String city = CitySearchTextBox.Text;
+            eUnits units = eUnits.IMPERIAL;
+            if (!WeatherReceiver.Initialize(city, units))
+                return;
+
+            UpdateLayout(units);
         }
 
-        private void CitySearchTextBox_TextChanged(object sender, EventArgs e) {
-            
+
+        private void UpdateLayout(eUnits units)
+        {
+            //City name, weather description, and weather icon
+            lblCityName.Text = WeatherReceiver.City.Substring(0, 1).ToUpper() + WeatherReceiver.City.Substring(1).ToLower();
+            lblWeatherDesc.Text = WeatherReceiver.WeatherDescription;
+            //icon
+
+            //Temperature
+            lblTemp.Text = WeatherReceiver.Temperature + "°";
+            lblTempHighLow.Text = WeatherReceiver.TemperatureLow + "°/" + WeatherReceiver.TemperatureHigh + "°";
+            lblTempFeelsLike.Text = "Feels Like: " + WeatherReceiver.TemperatureFeelsLike + "°";
+
+            //Clouds, Sunrise/Sunset, Wind
+            lblClouds.Text = "Clouds: " + WeatherReceiver.CloudRatio + "%";
+            lblSunrise.Text = "Sunrise: " + WeatherReceiver.SunriseTime;
+            lblSunset.Text = "Sunset: " + WeatherReceiver.SunsetTime;
+            lblWind.Text = "Wind: " + WeatherReceiver.WindSpeed + (units == eUnits.IMPERIAL ? "mph " : "mps ") + WeatherReceiver.WindCardinalDirection;
+
+            //Pressure, Humidity, Visibility
+            lblPressure.Text = "Pressure: " + WeatherReceiver.Pressure + "hPa";
+            lblHumidity.Text = "Humidity: " + WeatherReceiver.Humidity + "%";
+            lblVisibility.Text = "Visibility: " + WeatherReceiver.Visibility + "%";
+
+            //Fill Forecast Days
+            //Day 1
+            lblForecastDesc1.Text = WeatherReceiver.ForecastDays[0].WeatherDescription;
+            lblForecastTemp1.Text = "Temp: " + WeatherReceiver.ForecastDays[0].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[0].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[0].TemperatureHigh + "°)";
+
+            //Day 2
+            lblForecastDesc2.Text = WeatherReceiver.ForecastDays[1].WeatherDescription;
+            lblForecastTemp2.Text = "Temp: " + WeatherReceiver.ForecastDays[1].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[1].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[1].TemperatureHigh + "°)";
+
+            //Day 3
+            lblForecastDesc3.Text = WeatherReceiver.ForecastDays[2].WeatherDescription;
+            lblForecastTemp3.Text = "Temp: " + WeatherReceiver.ForecastDays[2].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[2].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[2].TemperatureHigh + "°)";
+
+            //Day 4
+            lblForecastDesc4.Text = WeatherReceiver.ForecastDays[3].WeatherDescription;
+            lblForecastTemp4.Text = "Temp: " + WeatherReceiver.ForecastDays[3].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[3].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[3].TemperatureHigh + "°)";
+
+            //Day 5
+            lblForecastDesc5.Text = WeatherReceiver.ForecastDays[4].WeatherDescription;
+            lblForecastTemp5.Text = "Temp: " + WeatherReceiver.ForecastDays[4].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[4].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[4].TemperatureHigh + "°)";
+
+            //Day 6
+            lblForecastDesc6.Text = WeatherReceiver.ForecastDays[5].WeatherDescription;
+            lblForecastTemp6.Text = "Temp: " + WeatherReceiver.ForecastDays[5].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[5].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[5].TemperatureHigh + "°)";
         }
-        // Most of these click events were made on accident and likely wont be used
     }
 }
