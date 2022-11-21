@@ -325,9 +325,9 @@ namespace WeatherApp
             ForecastDays.Clear();
             for (int i = 0; i < 6; i++)
             {
-                double temp = double.Parse(forecastJson["list"][i]["main"]["temp"].ToString());
-                double tempLow = double.Parse(forecastJson["list"][i]["main"]["temp_min"].ToString());
-                double tempHigh = double.Parse(forecastJson["list"][i]["main"]["temp_max"].ToString());
+                int temp = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp"].ToString()));
+                int tempLow = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp_min"].ToString()));
+                int tempHigh = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp_max"].ToString()));
                 string weather = forecastJson["list"][i]["weather"][0]["main"].ToString();
                 string weatherDesc = forecastJson["list"][i]["weather"][0]["description"].ToString();
                 ForecastDay day = new ForecastDay(weather, weatherDesc, temp, tempLow, tempHigh);
@@ -424,11 +424,11 @@ namespace WeatherApp
     {
         public string Weather { get; private set; }
         public string WeatherDescription { get; private set; }
-        public double Temperature { get; private set; }
-        public double TemperatureLow { get; private set; }
-        public double TemperatureHigh { get; private set; }
+        public int Temperature { get; private set; }
+        public int TemperatureLow { get; private set; }
+        public int TemperatureHigh { get; private set; }
 
-        public ForecastDay(string weather, string weatherDesc, double temp, double tempLow, double tempHigh)
+        public ForecastDay(string weather, string weatherDesc, int temp, int tempLow, int tempHigh)
         {
             Weather = weather;
             WeatherDescription = weatherDesc;
