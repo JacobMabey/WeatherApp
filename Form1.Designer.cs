@@ -68,6 +68,7 @@
             this.lblForecastDesc6 = new System.Windows.Forms.Label();
             this.lblForecastTemp1 = new System.Windows.Forms.Label();
             this.btnCitySearch = new System.Windows.Forms.Button();
+            this.btnCurrentLocation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgForecastIcon6)).BeginInit();
@@ -566,11 +567,22 @@
             this.btnCitySearch.UseVisualStyleBackColor = true;
             this.btnCitySearch.Click += new System.EventHandler(this.btnCitySearch_Click);
             // 
+            // btnCurrentLocation
+            // 
+            this.btnCurrentLocation.Location = new System.Drawing.Point(1346, 41);
+            this.btnCurrentLocation.Name = "btnCurrentLocation";
+            this.btnCurrentLocation.Size = new System.Drawing.Size(65, 61);
+            this.btnCurrentLocation.TabIndex = 20;
+            this.btnCurrentLocation.Text = "CL";
+            this.btnCurrentLocation.UseVisualStyleBackColor = true;
+            this.btnCurrentLocation.Click += new System.EventHandler(this.btnCurrentLocation_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2047, 1446);
+            this.Controls.Add(this.btnCurrentLocation);
             this.Controls.Add(this.btnCitySearch);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblSunset);
@@ -590,6 +602,7 @@
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
             this.Text = "Weather Application";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -646,5 +659,6 @@
         private Label lblForecastDesc6;
         private Label lblForecastTemp1;
         private Button btnCitySearch;
+        private Button btnCurrentLocation;
     }
 }
