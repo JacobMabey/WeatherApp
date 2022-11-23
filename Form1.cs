@@ -110,31 +110,37 @@ namespace WeatherApp
             //Fill Forecast Days
             //Day 1
             lblForecastDay1.Text = WeatherReceiver.GetDayOfWeek(1);
+            imgForecastIcon1.Load(WeatherReceiver.ForecastDays[0].WeatherIconUrl);
             lblForecastDesc1.Text = WeatherReceiver.ForecastDays[0].WeatherDescription;
             lblForecastTemp1.Text = "Temp: " + WeatherReceiver.ForecastDays[0].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[0].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[0].TemperatureHigh + "°)";
 
             //Day 
             lblForecastDay2.Text = WeatherReceiver.GetDayOfWeek(2);
+            imgForecastIcon2.Load(WeatherReceiver.ForecastDays[1].WeatherIconUrl);
             lblForecastDesc2.Text = WeatherReceiver.ForecastDays[1].WeatherDescription;
             lblForecastTemp2.Text = "Temp: " + WeatherReceiver.ForecastDays[1].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[1].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[1].TemperatureHigh + "°)";
 
             //Day 3
             lblForecastDay3.Text = WeatherReceiver.GetDayOfWeek(3);
+            imgForecastIcon3.Load(WeatherReceiver.ForecastDays[2].WeatherIconUrl);
             lblForecastDesc3.Text = WeatherReceiver.ForecastDays[2].WeatherDescription;
             lblForecastTemp3.Text = "Temp: " + WeatherReceiver.ForecastDays[2].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[2].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[2].TemperatureHigh + "°)";
 
             //Day 4
             lblForecastDay4.Text = WeatherReceiver.GetDayOfWeek(4);
+            imgForecastIcon4.Load(WeatherReceiver.ForecastDays[3].WeatherIconUrl);
             lblForecastDesc4.Text = WeatherReceiver.ForecastDays[3].WeatherDescription;
             lblForecastTemp4.Text = "Temp: " + WeatherReceiver.ForecastDays[3].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[3].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[3].TemperatureHigh + "°)";
 
             //Day 5
             lblForecastDay5.Text = WeatherReceiver.GetDayOfWeek(5);
+            imgForecastIcon5.Load(WeatherReceiver.ForecastDays[4].WeatherIconUrl);
             lblForecastDesc5.Text = WeatherReceiver.ForecastDays[4].WeatherDescription;
             lblForecastTemp5.Text = "Temp: " + WeatherReceiver.ForecastDays[4].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[4].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[4].TemperatureHigh + "°)";
 
             //Day 6
             lblForecastDay6.Text = WeatherReceiver.GetDayOfWeek(6);
+            imgForecastIcon6.Load(WeatherReceiver.ForecastDays[5].WeatherIconUrl);
             lblForecastDesc6.Text = WeatherReceiver.ForecastDays[5].WeatherDescription;
             lblForecastTemp6.Text = "Temp: " + WeatherReceiver.ForecastDays[5].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[5].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[5].TemperatureHigh + "°)";
         }
