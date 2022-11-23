@@ -6,6 +6,10 @@ using System.Text.Json.Nodes;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Microsoft.VisualBasic.Logging;
+using System.Device.Location;
+using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace WeatherApp
 {
@@ -15,6 +19,8 @@ namespace WeatherApp
 
         #nullable disable
         private static JsonNode weatherJson, forecastJson;
+
+        public static CLocation CurrentLocation { get; private set; }
 
         public static string City { get; private set; } = "";
         public static eUnits Units { get; private set; } = eUnits.METRIC;
@@ -250,6 +256,37 @@ namespace WeatherApp
             }
         }
 
+        public static String WeatherIconURL
+        {
+            get
+            {
+                if (weatherJson == null) return "";
+                return $"http://openweathermap.org/img/wn/{weatherJson["weather"][0]["icon"].ToString()}@2x.png";
+            }
+        }
+
+        /**
+         * Get current day of week
+         */
+        public static String GetDayOfWeek(int addDays = 0)
+        {
+            return DateTime.Now.AddDays(addDays).ToString("ddd");
+        }
+
+
+
+        /**
+         * Initializes API with current location and units of measurement
+         */
+        public static bool Initialize(eUnits units)
+        {
+            
+            double lat = CurrentLocation.Latitude;
+            double lon = CurrentLocation.Longitude;
+
+            Initialized = Initialize(lat, lon, units);
+            return Initialized;
+        }
 
         /**
          * Initializes API with a selected city and units of measurement
@@ -278,7 +315,6 @@ namespace WeatherApp
                 City = "";
                 Units = eUnits.METRIC;
                 Initialized = false;
-                return Initialized;
             }
             return Initialized;
         }
@@ -309,7 +345,6 @@ namespace WeatherApp
                 City = "";
                 Units = eUnits.METRIC;
                 Initialized = false;
-                return Initialized;
             }
             return Initialized;
         }
@@ -325,18 +360,29 @@ namespace WeatherApp
             ForecastDays.Clear();
             for (int i = 0; i < 6; i++)
             {
-                double temp = double.Parse(forecastJson["list"][i]["main"]["temp"].ToString());
-                double tempLow = double.Parse(forecastJson["list"][i]["main"]["temp_min"].ToString());
-                double tempHigh = double.Parse(forecastJson["list"][i]["main"]["temp_max"].ToString());
+                int temp = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp"].ToString()));
+                int tempLow = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp_min"].ToString()));
+                int tempHigh = (int)Math.Round(double.Parse(forecastJson["list"][i]["main"]["temp_max"].ToString()));
                 string weather = forecastJson["list"][i]["weather"][0]["main"].ToString();
                 string weatherDesc = forecastJson["list"][i]["weather"][0]["description"].ToString();
-                ForecastDay day = new ForecastDay(weather, weatherDesc, temp, tempLow, tempHigh);
+                string weatherIcon = forecastJson["list"][i]["weather"][0]["icon"].ToString();
+                ForecastDay day = new ForecastDay(weather, weatherDesc, temp, tempLow, tempHigh, weatherIcon);
                 ForecastDays.Add(day);
             }
             return true;
         }
 
 
+        /**
+         * Initializes geo coordinate system to get current device location
+         */
+        public static bool InitializeGeoLocation()
+        {
+            CurrentLocation = new CLocation();
+            CurrentLocation.GetLocationDataEvent();
+
+            return true;
+        }
 
 
         /**
@@ -424,17 +470,52 @@ namespace WeatherApp
     {
         public string Weather { get; private set; }
         public string WeatherDescription { get; private set; }
-        public double Temperature { get; private set; }
-        public double TemperatureLow { get; private set; }
-        public double TemperatureHigh { get; private set; }
+        public int Temperature { get; private set; }
+        public int TemperatureLow { get; private set; }
+        public int TemperatureHigh { get; private set; }
+        public string WeatherIconUrl { get; private set; }
 
-        public ForecastDay(string weather, string weatherDesc, double temp, double tempLow, double tempHigh)
+        public ForecastDay(string weather, string weatherDesc, int temp, int tempLow, int tempHigh, string weatherIcon)
         {
             Weather = weather;
             WeatherDescription = weatherDesc;
             Temperature = temp;
             TemperatureLow = tempLow;
             TemperatureHigh = tempHigh;
+            WeatherIconUrl = $"http://openweathermap.org/img/wn/{weatherIcon}@2x.png";
+        }
+    }
+
+    public class CLocation
+    {
+        public GeoCoordinateWatcher watcher;
+        public double Latitude { get; private set; }   
+        public double Longitude { get; private set; }
+
+        public void GetLocationDataEvent()
+        {
+            this.watcher = new GeoCoordinateWatcher();
+            watcher.StatusChanged += Watcher_StatusChanged;
+            this.watcher.TryStart(false, TimeSpan.FromMilliseconds(1000));
+        }
+
+        private void Watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
+        {
+            if (e.Status == GeoPositionStatus.Ready)
+            {
+                // Display the latitude and longitude.
+                if (watcher.Position.Location.IsUnknown)
+                {
+                    Latitude = 0;
+                    Longitude = 0;
+                }
+                else
+                {
+                    GeoCoordinate location = watcher.Position.Location;
+                    Latitude = location.Latitude;
+                    Longitude = location.Longitude;
+                }
+            }
         }
     }
 }

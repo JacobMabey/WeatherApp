@@ -30,7 +30,7 @@
         {
             this.CitySearchTextBox = new System.Windows.Forms.TextBox();
             this.lblCityName = new System.Windows.Forms.Label();
-            this.TodayGIF = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblWeatherDesc = new System.Windows.Forms.Label();
             this.lblClouds = new System.Windows.Forms.Label();
             this.lblWind = new System.Windows.Forms.Label();
@@ -68,7 +68,8 @@
             this.lblForecastDesc6 = new System.Windows.Forms.Label();
             this.lblForecastTemp1 = new System.Windows.Forms.Label();
             this.btnCitySearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.TodayGIF)).BeginInit();
+            this.btnCurrentLocation = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgForecastIcon6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgForecastIcon5)).BeginInit();
@@ -101,15 +102,15 @@
             this.lblCityName.TabIndex = 2;
             this.lblCityName.Text = "City Name Here";
             // 
-            // TodayGIF
+            // pictureBox1
             // 
-            this.TodayGIF.Image = global::WeatherApp.Properties.Resources.Thunderstorm;
-            this.TodayGIF.Location = new System.Drawing.Point(392, 18);
-            this.TodayGIF.Name = "TodayGIF";
-            this.TodayGIF.Size = new System.Drawing.Size(373, 214);
-            this.TodayGIF.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.TodayGIF.TabIndex = 3;
-            this.TodayGIF.TabStop = false;
+            this.pictureBox1.Image = global::WeatherApp.Properties.Resources.Snow;
+            this.pictureBox1.Location = new System.Drawing.Point(392, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(373, 214);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // lblWeatherDesc
             // 
@@ -125,7 +126,7 @@
             // 
             this.lblClouds.AutoSize = true;
             this.lblClouds.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblClouds.Location = new System.Drawing.Point(270, 141);
+            this.lblClouds.Location = new System.Drawing.Point(236, 141);
             this.lblClouds.Name = "lblClouds";
             this.lblClouds.Size = new System.Drawing.Size(119, 28);
             this.lblClouds.TabIndex = 5;
@@ -135,17 +136,17 @@
             // 
             this.lblWind.AutoSize = true;
             this.lblWind.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblWind.Location = new System.Drawing.Point(51, 200);
+            this.lblWind.Location = new System.Drawing.Point(67, 200);
             this.lblWind.Name = "lblWind";
-            this.lblWind.Size = new System.Drawing.Size(253, 32);
+            this.lblWind.Size = new System.Drawing.Size(256, 32);
             this.lblWind.TabIndex = 6;
-            this.lblWind.Text = "Wind: Placeholder text";
+            this.lblWind.Text = "Wind: Placeholder Text";
             // 
             // lblPressure
             // 
             this.lblPressure.AutoSize = true;
             this.lblPressure.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPressure.Location = new System.Drawing.Point(270, 248);
+            this.lblPressure.Location = new System.Drawing.Point(261, 248);
             this.lblPressure.Name = "lblPressure";
             this.lblPressure.Size = new System.Drawing.Size(154, 32);
             this.lblPressure.TabIndex = 7;
@@ -323,18 +324,18 @@
             // imgForecastIcon6
             // 
             this.imgForecastIcon6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon6.Image = global::WeatherApp.Properties.Resources.GIFTest;
+            this.imgForecastIcon6.Image = global::WeatherApp.Properties.Resources.BrokenClouds;
             this.imgForecastIcon6.Location = new System.Drawing.Point(121, 480);
             this.imgForecastIcon6.Name = "imgForecastIcon6";
             this.imgForecastIcon6.Size = new System.Drawing.Size(171, 89);
-            this.imgForecastIcon6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgForecastIcon6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imgForecastIcon6.TabIndex = 32;
             this.imgForecastIcon6.TabStop = false;
             // 
             // imgForecastIcon5
             // 
             this.imgForecastIcon5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon5.Image = global::WeatherApp.Properties.Resources.FewCloudsDay;
+            this.imgForecastIcon5.Image = global::WeatherApp.Properties.Resources.FewCloudsNight;
             this.imgForecastIcon5.Location = new System.Drawing.Point(121, 383);
             this.imgForecastIcon5.Name = "imgForecastIcon5";
             this.imgForecastIcon5.Size = new System.Drawing.Size(171, 89);
@@ -345,7 +346,7 @@
             // imgForecastIcon4
             // 
             this.imgForecastIcon4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon4.Image = global::WeatherApp.Properties.Resources.ClearSkiesNight;
+            this.imgForecastIcon4.Image = global::WeatherApp.Properties.Resources.FewCloudsDay;
             this.imgForecastIcon4.Location = new System.Drawing.Point(121, 288);
             this.imgForecastIcon4.Name = "imgForecastIcon4";
             this.imgForecastIcon4.Size = new System.Drawing.Size(171, 89);
@@ -356,7 +357,7 @@
             // imgForecastIcon3
             // 
             this.imgForecastIcon3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon3.Image = global::WeatherApp.Properties.Resources.ClearSkiesDay;
+            this.imgForecastIcon3.Image = global::WeatherApp.Properties.Resources.ClearSkiesNight;
             this.imgForecastIcon3.Location = new System.Drawing.Point(121, 193);
             this.imgForecastIcon3.Name = "imgForecastIcon3";
             this.imgForecastIcon3.Size = new System.Drawing.Size(171, 89);
@@ -367,7 +368,7 @@
             // imgForecastIcon2
             // 
             this.imgForecastIcon2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon2.Image = global::WeatherApp.Properties.Resources.BrokenClouds;
+            this.imgForecastIcon2.Image = global::WeatherApp.Properties.Resources.ClearSkiesDay;
             this.imgForecastIcon2.Location = new System.Drawing.Point(121, 98);
             this.imgForecastIcon2.Name = "imgForecastIcon2";
             this.imgForecastIcon2.Size = new System.Drawing.Size(171, 89);
@@ -438,7 +439,7 @@
             // imgForecastIcon1
             // 
             this.imgForecastIcon1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon1.Image = global::WeatherApp.Properties.Resources.FewCloudsNight;
+            this.imgForecastIcon1.Image = global::WeatherApp.Properties.Resources.BrokenClouds;
             this.imgForecastIcon1.Location = new System.Drawing.Point(121, 3);
             this.imgForecastIcon1.Name = "imgForecastIcon1";
             this.imgForecastIcon1.Size = new System.Drawing.Size(171, 89);
@@ -546,12 +547,24 @@
             this.btnCitySearch.UseVisualStyleBackColor = true;
             this.btnCitySearch.Click += new System.EventHandler(this.btnCitySearch_Click);
             // 
+            // btnCurrentLocation
+            // 
+            this.btnCurrentLocation.Location = new System.Drawing.Point(792, 25);
+            this.btnCurrentLocation.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCurrentLocation.Name = "btnCurrentLocation";
+            this.btnCurrentLocation.Size = new System.Drawing.Size(38, 37);
+            this.btnCurrentLocation.TabIndex = 20;
+            this.btnCurrentLocation.Text = "CL";
+            this.btnCurrentLocation.UseVisualStyleBackColor = true;
+            this.btnCurrentLocation.Click += new System.EventHandler(this.btnCurrentLocation_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SkyBlue;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1204, 882);
+            this.Controls.Add(this.btnCurrentLocation);
             this.Controls.Add(this.btnCitySearch);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lblSunset);
@@ -565,12 +578,13 @@
             this.Controls.Add(this.lblWind);
             this.Controls.Add(this.lblClouds);
             this.Controls.Add(this.lblWeatherDesc);
-            this.Controls.Add(this.TodayGIF);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblCityName);
             this.Controls.Add(this.CitySearchTextBox);
             this.Name = "Form1";
             this.Text = "Weather Application";
-            ((System.ComponentModel.ISupportInitialize)(this.TodayGIF)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgForecastIcon6)).EndInit();
@@ -588,7 +602,7 @@
 
         private TextBox CitySearchTextBox;
         private Label lblCityName;
-        private PictureBox TodayGIF;
+        private PictureBox pictureBox1;
         private Label lblWeatherDesc;
         private Label lblClouds;
         private Label lblWind;
@@ -626,5 +640,6 @@
         private Label lblForecastDesc6;
         private Label lblForecastTemp1;
         private Button btnCitySearch;
+        private Button btnCurrentLocation;
     }
 }

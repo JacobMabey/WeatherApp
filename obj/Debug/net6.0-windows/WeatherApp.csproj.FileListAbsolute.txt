@@ -34,3 +34,5 @@ C:\C++Programming\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.dll
 C:\C++Programming\WeatherApp\bin\Debug\net6.0-windows\WeatherApp.pdb
 C:\C++Programming\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
 C:\C++Programming\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\bin\Debug\net6.0-windows\System.Device.dll
+C:\Users\Joshua\OneDrive\Second Year\Fall\Projects\WeatherApp\WeatherApp\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
