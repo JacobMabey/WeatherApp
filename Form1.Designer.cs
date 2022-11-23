@@ -104,7 +104,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WeatherApp.Properties.Resources.Snow;
+            this.pictureBox1.Image = global::WeatherApp.Properties.Resources.GIFTest;
             this.pictureBox1.Location = new System.Drawing.Point(392, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(373, 214);
