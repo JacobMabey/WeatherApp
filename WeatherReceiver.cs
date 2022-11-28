@@ -261,7 +261,7 @@ namespace WeatherApp
             get
             {
                 if (weatherJson == null) return "";
-                return $"http://openweathermap.org/img/wn/{weatherJson["weather"][0]["icon"].ToString()}@2x.png";
+                return $"http://openweathermap.org/img/wn/{weatherJson["weather"][0]["icon"].ToString()}@4x.png";
             }
         }
 
@@ -301,14 +301,18 @@ namespace WeatherApp
             try
             {
                 weatherJson = GetCityWeatherJSON(city);
+                if (weatherJson == null)
+                    throw new ArgumentException();
                 double lat = double.Parse(weatherJson["coord"]["lat"].ToString());
                 double lon = double.Parse(weatherJson["coord"]["lon"].ToString());
                 forecastJson = GetCityForecastJSON(lat, lon);
+                if (forecastJson == null)
+                    throw new ArgumentException();
                 InitializeForecastList();
                 City = city.ToLower().Trim(' ', ',', '.', '/', '(', ')', '\'', '\"');
                 Units = units;
                 Initialized = true;
-            } catch
+            } catch (ArgumentException)
             {
                 weatherJson = null;
                 forecastJson = null;
@@ -332,8 +336,12 @@ namespace WeatherApp
             try
             {
                 weatherJson = GetCityWeatherJSON(lat, lon);
+                if (weatherJson == null)
+                    throw new ArgumentException();
                 City = weatherJson["name"].ToString();
                 forecastJson = GetCityForecastJSON(lat, lon);
+                if (forecastJson == null)
+                    throw new ArgumentException();
                 InitializeForecastList();
                 Units = units;
                 Initialized = true;
@@ -394,18 +402,24 @@ namespace WeatherApp
             //Get current weather data
             var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?appid=910b890df0a91b53bc4afe41a18a08e3&q={city}" + (state.Equals("") ? "" : ","+state) + (country.Equals("") ? "" : "," + country) + $"&units={UnitsString}";
             var result = "";
-            
-            var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
-            httpWeatherRequest.Accept = "application/json";
-            var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpWeatherResponse.GetResponseStream()))
+
+            try
             {
-                result = streamReader.ReadToEnd();
+                var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
+                httpWeatherRequest.Accept = "application/json";
+                var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpWeatherResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();
+                }
+                JsonNode resultNode = ParseJSON(result);
+                if (resultNode["cod"].ToString().Equals("404"))
+                    throw new ArgumentException(resultNode["message"].ToString());
+                return resultNode;
+            } catch (WebException)
+            {
+                return null;
             }
-            JsonNode resultNode = ParseJSON(result);
-            if (resultNode["cod"].ToString().Equals("404"))
-                throw new ArgumentException(resultNode["message"].ToString());
-            return resultNode;
         }
         private static JsonNode GetCityWeatherJSON(string city, string country) => GetCityWeatherJSON(city, "", country);
         private static JsonNode GetCityWeatherJSON(string city) => GetCityWeatherJSON(city, "", "");
@@ -417,14 +431,21 @@ namespace WeatherApp
             var weatherUrl = $"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=910b890df0a91b53bc4afe41a18a08e3&units={UnitsString}";
             var result = "";
 
-            var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
-            httpWeatherRequest.Accept = "application/json";
-            var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpWeatherResponse.GetResponseStream()))
+            try
             {
-                result = streamReader.ReadToEnd();
+                var httpWeatherRequest = (HttpWebRequest)WebRequest.Create(weatherUrl);
+                httpWeatherRequest.Accept = "application/json";
+                var httpWeatherResponse = (HttpWebResponse)httpWeatherRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpWeatherResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();
+                }
+                return ParseJSON(result);
             }
-            return ParseJSON(result);
+            catch (WebException)
+            {
+                return null;
+            }
         }
 
         /**
@@ -437,15 +458,22 @@ namespace WeatherApp
             var forecastUrl = $"https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=910b890df0a91b53bc4afe41a18a08e3&units={UnitsString}";
             var result = "";
 
-            var httpForecastRequest = (HttpWebRequest)WebRequest.Create(forecastUrl);
-            httpForecastRequest.Accept = "application/json";
-            var httpForecastResponse = (HttpWebResponse)httpForecastRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpForecastResponse.GetResponseStream()))
+            try
             {
-                result = streamReader.ReadToEnd();
-            }
+                var httpForecastRequest = (HttpWebRequest)WebRequest.Create(forecastUrl);
+                httpForecastRequest.Accept = "application/json";
+                var httpForecastResponse = (HttpWebResponse)httpForecastRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpForecastResponse.GetResponseStream()))
+                {
+                    result = streamReader.ReadToEnd();
+                }
 
-            return ParseJSON(result);
+                return ParseJSON(result);
+            }
+            catch (WebException)
+            {
+                return null;
+            }
         }
 
 

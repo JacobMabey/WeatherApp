@@ -121,46 +121,25 @@
   <data name="Fog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fog.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FewCloudsDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FewCloudsDay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Rain" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Rain.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FewCloudsNight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FewCloudsNight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Thunderstorm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thunderstorm.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ClearSkiesNight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClearSkiesNight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Clouds" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Clouds.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BrokenClouds" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BrokenClouds.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="GIFTest1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GIFTest.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Haze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Haze.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ClearSkiesDay" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ClearSkiesDay.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Placeholder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Placeholder.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ClearSkies" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ClearSkies.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GIFTest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GIFTest.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Snow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Snow.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Default" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\default.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

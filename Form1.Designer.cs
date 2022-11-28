@@ -89,6 +89,7 @@
             this.CitySearchTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CitySearchTextBox.Location = new System.Drawing.Point(1447, 41);
             this.CitySearchTextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.CitySearchTextBox.MaxLength = 32;
             this.CitySearchTextBox.Name = "CitySearchTextBox";
             this.CitySearchTextBox.PlaceholderText = "City Search";
             this.CitySearchTextBox.Size = new System.Drawing.Size(407, 61);
@@ -99,7 +100,7 @@
             // 
             this.lblCityName.AutoSize = true;
             this.lblCityName.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblCityName.ForeColor = System.Drawing.Color.Yellow;
+            this.lblCityName.ForeColor = System.Drawing.Color.Black;
             this.lblCityName.Location = new System.Drawing.Point(20, 30);
             this.lblCityName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCityName.Name = "lblCityName";
@@ -109,11 +110,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WeatherApp.Properties.Resources.GIFTest;
-            this.pictureBox1.Location = new System.Drawing.Point(666, 30);
+            this.pictureBox1.Image = global::WeatherApp.Properties.Resources.Default;
+            this.pictureBox1.Location = new System.Drawing.Point(666, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(634, 351);
+            this.pictureBox1.Size = new System.Drawing.Size(634, 402);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -122,6 +123,7 @@
             // 
             this.lblWeatherDesc.AutoSize = true;
             this.lblWeatherDesc.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblWeatherDesc.ForeColor = System.Drawing.Color.Black;
             this.lblWeatherDesc.Location = new System.Drawing.Point(80, 139);
             this.lblWeatherDesc.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblWeatherDesc.Name = "lblWeatherDesc";
@@ -241,12 +243,12 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 37.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.91525F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.15952F));
             this.tableLayoutPanel1.Controls.Add(this.lblForecastTemp6, 3, 5);
             this.tableLayoutPanel1.Controls.Add(this.lblForecastTemp5, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.lblForecastTemp4, 3, 3);
@@ -289,7 +291,7 @@
             this.lblForecastTemp6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp6.AutoSize = true;
             this.lblForecastTemp6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp6.Location = new System.Drawing.Point(1257, 830);
+            this.lblForecastTemp6.Location = new System.Drawing.Point(1405, 830);
             this.lblForecastTemp6.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp6.Name = "lblForecastTemp6";
             this.lblForecastTemp6.Size = new System.Drawing.Size(482, 67);
@@ -301,7 +303,7 @@
             this.lblForecastTemp5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp5.AutoSize = true;
             this.lblForecastTemp5.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp5.Location = new System.Drawing.Point(1257, 673);
+            this.lblForecastTemp5.Location = new System.Drawing.Point(1405, 673);
             this.lblForecastTemp5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp5.Name = "lblForecastTemp5";
             this.lblForecastTemp5.Size = new System.Drawing.Size(482, 67);
@@ -313,7 +315,7 @@
             this.lblForecastTemp4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp4.AutoSize = true;
             this.lblForecastTemp4.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp4.Location = new System.Drawing.Point(1257, 516);
+            this.lblForecastTemp4.Location = new System.Drawing.Point(1405, 516);
             this.lblForecastTemp4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp4.Name = "lblForecastTemp4";
             this.lblForecastTemp4.Size = new System.Drawing.Size(482, 67);
@@ -325,7 +327,7 @@
             this.lblForecastTemp3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp3.AutoSize = true;
             this.lblForecastTemp3.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp3.Location = new System.Drawing.Point(1257, 359);
+            this.lblForecastTemp3.Location = new System.Drawing.Point(1405, 359);
             this.lblForecastTemp3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp3.Name = "lblForecastTemp3";
             this.lblForecastTemp3.Size = new System.Drawing.Size(482, 67);
@@ -337,7 +339,7 @@
             this.lblForecastTemp2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp2.AutoSize = true;
             this.lblForecastTemp2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp2.Location = new System.Drawing.Point(1257, 202);
+            this.lblForecastTemp2.Location = new System.Drawing.Point(1405, 202);
             this.lblForecastTemp2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp2.Name = "lblForecastTemp2";
             this.lblForecastTemp2.Size = new System.Drawing.Size(482, 67);
@@ -347,7 +349,7 @@
             // imgForecastIcon6
             // 
             this.imgForecastIcon6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon6.Image = global::WeatherApp.Properties.Resources.BrokenClouds;
+            this.imgForecastIcon6.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon6.Location = new System.Drawing.Point(205, 791);
             this.imgForecastIcon6.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon6.Name = "imgForecastIcon6";
@@ -359,7 +361,7 @@
             // imgForecastIcon5
             // 
             this.imgForecastIcon5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon5.Image = global::WeatherApp.Properties.Resources.FewCloudsNight;
+            this.imgForecastIcon5.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon5.Location = new System.Drawing.Point(205, 633);
             this.imgForecastIcon5.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon5.Name = "imgForecastIcon5";
@@ -371,7 +373,7 @@
             // imgForecastIcon4
             // 
             this.imgForecastIcon4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon4.Image = global::WeatherApp.Properties.Resources.FewCloudsDay;
+            this.imgForecastIcon4.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon4.Location = new System.Drawing.Point(205, 476);
             this.imgForecastIcon4.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon4.Name = "imgForecastIcon4";
@@ -383,7 +385,7 @@
             // imgForecastIcon3
             // 
             this.imgForecastIcon3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon3.Image = global::WeatherApp.Properties.Resources.ClearSkiesNight;
+            this.imgForecastIcon3.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon3.Location = new System.Drawing.Point(205, 319);
             this.imgForecastIcon3.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon3.Name = "imgForecastIcon3";
@@ -395,7 +397,7 @@
             // imgForecastIcon2
             // 
             this.imgForecastIcon2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon2.Image = global::WeatherApp.Properties.Resources.ClearSkiesDay;
+            this.imgForecastIcon2.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon2.Location = new System.Drawing.Point(205, 162);
             this.imgForecastIcon2.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon2.Name = "imgForecastIcon2";
@@ -467,7 +469,7 @@
             // imgForecastIcon1
             // 
             this.imgForecastIcon1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.imgForecastIcon1.Image = global::WeatherApp.Properties.Resources.BrokenClouds;
+            this.imgForecastIcon1.Image = global::WeatherApp.Properties.Resources.Default;
             this.imgForecastIcon1.Location = new System.Drawing.Point(205, 5);
             this.imgForecastIcon1.Margin = new System.Windows.Forms.Padding(5);
             this.imgForecastIcon1.Name = "imgForecastIcon1";
@@ -565,7 +567,7 @@
             this.lblForecastTemp1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lblForecastTemp1.AutoSize = true;
             this.lblForecastTemp1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblForecastTemp1.Location = new System.Drawing.Point(1257, 45);
+            this.lblForecastTemp1.Location = new System.Drawing.Point(1405, 45);
             this.lblForecastTemp1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblForecastTemp1.Name = "lblForecastTemp1";
             this.lblForecastTemp1.Size = new System.Drawing.Size(482, 67);
@@ -574,39 +576,54 @@
             // 
             // btnCitySearch
             // 
+            this.btnCitySearch.BackColor = System.Drawing.Color.Transparent;
+            this.btnCitySearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCitySearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCitySearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCitySearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCitySearch.Location = new System.Drawing.Point(1862, 41);
             this.btnCitySearch.Name = "btnCitySearch";
             this.btnCitySearch.Size = new System.Drawing.Size(151, 61);
             this.btnCitySearch.TabIndex = 19;
             this.btnCitySearch.Text = "Search";
-            this.btnCitySearch.UseVisualStyleBackColor = true;
+            this.btnCitySearch.UseVisualStyleBackColor = false;
             this.btnCitySearch.Click += new System.EventHandler(this.btnCitySearch_Click);
             // 
             // btnCurrentLocation
             // 
-            this.btnCurrentLocation.Location = new System.Drawing.Point(1346, 41);
+            this.btnCurrentLocation.BackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentLocation.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCurrentLocation.FlatAppearance.BorderSize = 0;
+            this.btnCurrentLocation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentLocation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnCurrentLocation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCurrentLocation.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnCurrentLocation.Location = new System.Drawing.Point(1314, -15);
             this.btnCurrentLocation.Name = "btnCurrentLocation";
-            this.btnCurrentLocation.Size = new System.Drawing.Size(65, 61);
+            this.btnCurrentLocation.Size = new System.Drawing.Size(128, 127);
             this.btnCurrentLocation.TabIndex = 20;
-            this.btnCurrentLocation.Text = "CL";
-            this.btnCurrentLocation.UseVisualStyleBackColor = true;
+            this.btnCurrentLocation.Text = "⮙";
+            this.btnCurrentLocation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCurrentLocation.UseVisualStyleBackColor = false;
             this.btnCurrentLocation.Click += new System.EventHandler(this.btnCurrentLocation_Click);
             // 
             // pnlLoading
             // 
             this.pnlLoading.BackColor = System.Drawing.Color.LightSkyBlue;
             this.pnlLoading.Controls.Add(this.lblLoading);
-            this.pnlLoading.Location = new System.Drawing.Point(80, 59);
+            this.pnlLoading.Location = new System.Drawing.Point(9, 895);
+            this.pnlLoading.Margin = new System.Windows.Forms.Padding(0);
             this.pnlLoading.Name = "pnlLoading";
-            this.pnlLoading.Size = new System.Drawing.Size(1869, 1322);
+            this.pnlLoading.Size = new System.Drawing.Size(2023, 1421);
             this.pnlLoading.TabIndex = 21;
             // 
             // lblLoading
             // 
             this.lblLoading.AutoSize = true;
+            this.lblLoading.BackColor = System.Drawing.Color.Transparent;
             this.lblLoading.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblLoading.ForeColor = System.Drawing.Color.Black;
-            this.lblLoading.Location = new System.Drawing.Point(773, 627);
+            this.lblLoading.Location = new System.Drawing.Point(846, 676);
             this.lblLoading.Name = "lblLoading";
             this.lblLoading.Size = new System.Drawing.Size(354, 93);
             this.lblLoading.TabIndex = 0;

@@ -14,7 +14,6 @@ namespace WeatherApp
                 loading = value;
                 if (lblLoading != null && pnlLoading != null)
                 {
-                    lblLoading.Visible = loading;
                     pnlLoading.Visible = loading;
                 }
             }
@@ -46,74 +45,61 @@ namespace WeatherApp
             }
         }
 
-        private void btnCitySearch_Click(object sender, EventArgs e)
-        {
-            String city = CitySearchTextBox.Text;
-            eUnits units = eUnits.IMPERIAL;
-            if (!WeatherReceiver.Initialize(city, units))
-                return;
-
-            UpdateLayout(units);
-        }
-
 
         private void UpdateLayout(eUnits units)
         {
-            Loading = true;
-
             //City name, weather description, and weather icon
             if (WeatherReceiver.City.Equals(""))
                 lblCityName.Text = "NA";
-            else lblCityName.Text = WeatherReceiver.City.Substring(0, 1).ToUpper() + WeatherReceiver.City.Substring(1).ToLower();
-            lblWeatherDesc.Text = WeatherReceiver.WeatherDescription;
+            else lblCityName.Text = Capitalize(WeatherReceiver.City);
+            lblWeatherDesc.Text = Capitalize(WeatherReceiver.WeatherDescription);
 
-            // Main GIF stuff
-            //if (WeatherReceiver.WeatherDescription == "overcast clouds") {
-            //    pictureBox1.Image = Properties.Resources.Thunderstorm;
-            //} else {
-            //    pictureBox1.Image = Properties.Resources.GIFTest;
-            //}
+            
+            //Load main weather icon
+            pictureBox1.Load(WeatherReceiver.WeatherIconURL);
 
-            switch (WeatherReceiver.WeatherDescription) {
-                case "broken clouds":
-                case "overcast clouds":
-                case "scattered clouds":
-                    pictureBox1.Image = Properties.Resources.Clouds;
-                    pnlLoading.BackColor = Color.LightSteelBlue;
-                    this.BackColor = Color.LightSteelBlue;
-                    break;
-                case "rain":
-                case "heavy intensity rain":
-                    pictureBox1.Image = Properties.Resources.Rain;
-                    pnlLoading.BackColor = Color.SteelBlue;
-                    this.BackColor = Color.SteelBlue;
-                    break;
-                case "haze":
-                case "mist":
-                    pictureBox1.Image = Properties.Resources.Haze;
-                    pnlLoading.BackColor = Color.LightSteelBlue;
-                    this.BackColor = Color.LightSteelBlue;
-                    break;
-                case "clear sky":
-                    pictureBox1.Image = Properties.Resources.ClearSkies;
+            //Change background color based on weather
+            switch (WeatherReceiver.Weather)
+            {
+                case "Clear":
                     pnlLoading.BackColor = Color.LightSkyBlue;
                     this.BackColor = Color.LightSkyBlue;
                     break;
-                case "light snow":
-                    pictureBox1.Image = Properties.Resources.Snow;
+                case "Clouds":
+                    pnlLoading.BackColor = Color.LightSteelBlue;
+                    this.BackColor = Color.LightSteelBlue;
+                    break;
+                case "Rain":
+                case "Drizzle":
+                    pnlLoading.BackColor = Color.SteelBlue;
+                    this.BackColor = Color.SteelBlue;
+                    break;
+                case "Thunderstorm":
+                    pnlLoading.BackColor = Color.SteelBlue;
+                    this.BackColor = Color.SteelBlue;
+                    break;
+                case "Snow":
                     pnlLoading.BackColor = Color.PowderBlue;
                     this.BackColor = Color.PowderBlue;
                     break;
+                case "Mist":
+                case "Smoke":
+                case "Haze":
+                case "Dust":
+                case "Fog":
+                case "Sand":
+                case "Ash":
+                case "Squall":
+                case "Tornado":
+                    pnlLoading.BackColor = Color.LightSteelBlue;
+                    this.BackColor = Color.LightSteelBlue;
+                    break;
                 default:
-                    pictureBox1.Image = Properties.Resources.GIFTest;
                     pnlLoading.BackColor = Color.LightSkyBlue;
                     this.BackColor = Color.LightSkyBlue;
                     break;
             }
 
-            // Weather Images for other days
-
-            //icon
 
             //Temperature
             lblTemp.Text = WeatherReceiver.Temperature + "°";
@@ -135,46 +121,71 @@ namespace WeatherApp
             //Day 1
             lblForecastDay1.Text = WeatherReceiver.GetDayOfWeek(1);
             imgForecastIcon1.Load(WeatherReceiver.ForecastDays[0].WeatherIconUrl);
-            lblForecastDesc1.Text = WeatherReceiver.ForecastDays[0].WeatherDescription;
-            lblForecastTemp1.Text = "Temp: " + WeatherReceiver.ForecastDays[0].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[0].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[0].TemperatureHigh + "°)";
+            lblForecastDesc1.Text = Capitalize(WeatherReceiver.ForecastDays[0].WeatherDescription);
+            lblForecastTemp1.Text = WeatherReceiver.ForecastDays[0].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[0].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[0].TemperatureHigh + "°)";
 
             //Day 
             lblForecastDay2.Text = WeatherReceiver.GetDayOfWeek(2);
             imgForecastIcon2.Load(WeatherReceiver.ForecastDays[1].WeatherIconUrl);
-            lblForecastDesc2.Text = WeatherReceiver.ForecastDays[1].WeatherDescription;
-            lblForecastTemp2.Text = "Temp: " + WeatherReceiver.ForecastDays[1].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[1].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[1].TemperatureHigh + "°)";
+            lblForecastDesc2.Text = Capitalize(WeatherReceiver.ForecastDays[1].WeatherDescription);
+            lblForecastTemp2.Text = WeatherReceiver.ForecastDays[1].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[1].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[1].TemperatureHigh + "°)";
 
             //Day 3
             lblForecastDay3.Text = WeatherReceiver.GetDayOfWeek(3);
             imgForecastIcon3.Load(WeatherReceiver.ForecastDays[2].WeatherIconUrl);
-            lblForecastDesc3.Text = WeatherReceiver.ForecastDays[2].WeatherDescription;
-            lblForecastTemp3.Text = "Temp: " + WeatherReceiver.ForecastDays[2].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[2].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[2].TemperatureHigh + "°)";
+            lblForecastDesc3.Text = Capitalize(WeatherReceiver.ForecastDays[2].WeatherDescription);
+            lblForecastTemp3.Text = WeatherReceiver.ForecastDays[2].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[2].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[2].TemperatureHigh + "°)";
 
             //Day 4
             lblForecastDay4.Text = WeatherReceiver.GetDayOfWeek(4);
             imgForecastIcon4.Load(WeatherReceiver.ForecastDays[3].WeatherIconUrl);
-            lblForecastDesc4.Text = WeatherReceiver.ForecastDays[3].WeatherDescription;
-            lblForecastTemp4.Text = "Temp: " + WeatherReceiver.ForecastDays[3].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[3].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[3].TemperatureHigh + "°)";
+            lblForecastDesc4.Text = Capitalize(WeatherReceiver.ForecastDays[3].WeatherDescription);
+            lblForecastTemp4.Text = WeatherReceiver.ForecastDays[3].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[3].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[3].TemperatureHigh + "°)";
 
             //Day 5
             lblForecastDay5.Text = WeatherReceiver.GetDayOfWeek(5);
             imgForecastIcon5.Load(WeatherReceiver.ForecastDays[4].WeatherIconUrl);
-            lblForecastDesc5.Text = WeatherReceiver.ForecastDays[4].WeatherDescription;
-            lblForecastTemp5.Text = "Temp: " + WeatherReceiver.ForecastDays[4].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[4].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[4].TemperatureHigh + "°)";
+            lblForecastDesc5.Text = Capitalize(WeatherReceiver.ForecastDays[4].WeatherDescription);
+            lblForecastTemp5.Text = WeatherReceiver.ForecastDays[4].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[4].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[4].TemperatureHigh + "°)";
 
             //Day 6
             lblForecastDay6.Text = WeatherReceiver.GetDayOfWeek(6);
             imgForecastIcon6.Load(WeatherReceiver.ForecastDays[5].WeatherIconUrl);
-            lblForecastDesc6.Text = WeatherReceiver.ForecastDays[5].WeatherDescription;
-            lblForecastTemp6.Text = "Temp: " + WeatherReceiver.ForecastDays[5].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[5].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[5].TemperatureHigh + "°)";
+            lblForecastDesc6.Text = Capitalize(WeatherReceiver.ForecastDays[5].WeatherDescription);
+            lblForecastTemp6.Text = WeatherReceiver.ForecastDays[5].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[5].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[5].TemperatureHigh + "°)";
+        }
 
-            Loading = false;
+        private string Capitalize(string text)
+        {
+            text = text.Trim();
+            if (text.Equals("")) return text;
+            string[] splitText = text.Split();
+            if (splitText.Length == 1)
+                return text.Substring(0, 1).ToUpper() + text.Substring(1).ToLower();
+            for (int i = 0; i < splitText.Length; i++)
+            {
+                if (splitText[i].Equals("")) continue;
+                splitText[i] = splitText[i].Substring(0, 1).ToUpper() + splitText[i].Substring(1).ToLower();
+            }
+            text = string.Join(' ', splitText);
+            return text;
         }
 
         private void btnCurrentLocation_Click(object sender, EventArgs e)
         {
             eUnits units = eUnits.IMPERIAL;
             WeatherReceiver.Initialize(units);
+
+            UpdateLayout(units);
+        }
+
+        private void btnCitySearch_Click(object sender, EventArgs e)
+        {
+            string city = CitySearchTextBox.Text;
+            eUnits units = eUnits.IMPERIAL;
+            if (!WeatherReceiver.Initialize(city, units))
+                return;
+            CitySearchTextBox.Text = "";
 
             UpdateLayout(units);
         }
@@ -190,8 +201,15 @@ namespace WeatherApp
             if (e.Status == GeoPositionStatus.Ready)
             {
                 eUnits units = eUnits.IMPERIAL;
-                WeatherReceiver.Initialize(units);
-                UpdateLayout(units);
+                bool success = WeatherReceiver.Initialize(units);
+                if (success)
+                {
+                    UpdateLayout(units);
+                    Loading = false;
+                } else
+                {
+                    lblLoading.Text = "No Connection";
+                }
             }
         }
     }
