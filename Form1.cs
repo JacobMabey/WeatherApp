@@ -4,7 +4,21 @@ namespace WeatherApp
 {
     public partial class Form1 : Form
     {
-       
+
+        private bool loading = true;
+        public bool Loading
+        {
+            get => loading;
+            set
+            {
+                loading = value;
+                if (lblLoading != null && pnlLoading != null)
+                {
+                    lblLoading.Visible = loading;
+                    pnlLoading.Visible = loading;
+                }
+            }
+        }
 
         static void Main()
         {
@@ -16,17 +30,13 @@ namespace WeatherApp
 
         public Form1()
         {
-            InitializeComponent();
             InitializeLayout();
+            InitializeComponent();
         }
 
         public void InitializeLayout()
         {
-            /*String city = "salt lake city";
-            eUnits units = eUnits.IMPERIAL;
-            WeatherReceiver.Initialize(city, units);
-
-            UpdateLayout(units);*/
+            Loading = true;
         }
 
         // This is validation so you cant type numbers into the city search
@@ -49,6 +59,8 @@ namespace WeatherApp
 
         private void UpdateLayout(eUnits units)
         {
+            Loading = true;
+
             //City name, weather description, and weather icon
             if (WeatherReceiver.City.Equals(""))
                 lblCityName.Text = "NA";
@@ -67,23 +79,35 @@ namespace WeatherApp
                 case "overcast clouds":
                 case "scattered clouds":
                     pictureBox1.Image = Properties.Resources.Clouds;
+                    pnlLoading.BackColor = Color.LightSteelBlue;
+                    this.BackColor = Color.LightSteelBlue;
                     break;
                 case "rain":
                 case "heavy intensity rain":
                     pictureBox1.Image = Properties.Resources.Rain;
+                    pnlLoading.BackColor = Color.SteelBlue;
+                    this.BackColor = Color.SteelBlue;
                     break;
                 case "haze":
                 case "mist":
                     pictureBox1.Image = Properties.Resources.Haze;
+                    pnlLoading.BackColor = Color.LightSteelBlue;
+                    this.BackColor = Color.LightSteelBlue;
                     break;
                 case "clear sky":
                     pictureBox1.Image = Properties.Resources.ClearSkies;
+                    pnlLoading.BackColor = Color.LightSkyBlue;
+                    this.BackColor = Color.LightSkyBlue;
                     break;
                 case "light snow":
                     pictureBox1.Image = Properties.Resources.Snow;
+                    pnlLoading.BackColor = Color.PowderBlue;
+                    this.BackColor = Color.PowderBlue;
                     break;
                 default:
                     pictureBox1.Image = Properties.Resources.GIFTest;
+                    pnlLoading.BackColor = Color.LightSkyBlue;
+                    this.BackColor = Color.LightSkyBlue;
                     break;
             }
 
@@ -105,7 +129,7 @@ namespace WeatherApp
             //Pressure, Humidity, Visibility
             lblPressure.Text = "Pressure: " + WeatherReceiver.Pressure + "hPa";
             lblHumidity.Text = "Humidity: " + WeatherReceiver.Humidity + "%";
-            lblVisibility.Text = "Visibility: " + WeatherReceiver.Visibility + "%";
+            lblVisibility.Text = "Visibility: " + (WeatherReceiver.Visibility / 100) + "%";
 
             //Fill Forecast Days
             //Day 1
@@ -143,6 +167,8 @@ namespace WeatherApp
             imgForecastIcon6.Load(WeatherReceiver.ForecastDays[5].WeatherIconUrl);
             lblForecastDesc6.Text = WeatherReceiver.ForecastDays[5].WeatherDescription;
             lblForecastTemp6.Text = "Temp: " + WeatherReceiver.ForecastDays[5].Temperature + "° " + " (" + WeatherReceiver.ForecastDays[5].TemperatureLow + "°/" + WeatherReceiver.ForecastDays[5].TemperatureHigh + "°)";
+
+            Loading = false;
         }
 
         private void btnCurrentLocation_Click(object sender, EventArgs e)
