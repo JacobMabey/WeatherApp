@@ -611,7 +611,7 @@
             // 
             this.pnlLoading.BackColor = System.Drawing.Color.LightSkyBlue;
             this.pnlLoading.Controls.Add(this.lblLoading);
-            this.pnlLoading.Location = new System.Drawing.Point(9, 895);
+            this.pnlLoading.Location = new System.Drawing.Point(12, 12);
             this.pnlLoading.Margin = new System.Windows.Forms.Padding(0);
             this.pnlLoading.Name = "pnlLoading";
             this.pnlLoading.Size = new System.Drawing.Size(2023, 1421);
