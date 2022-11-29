@@ -221,6 +221,7 @@ namespace WeatherApp
             {
                 lblLoading.Text = "No Connection";
             }
+            CLTimeoutTimer.Stop();
         }
 
         private void Watcher_StatusChanged(object? sender, GeoPositionStatusChangedEventArgs e)
