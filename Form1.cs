@@ -1,9 +1,11 @@
 using System.Device.Location;
+using Timer = System.Windows.Forms.Timer;
 
 namespace WeatherApp
 {
     public partial class Form1 : Form
     {
+        private Timer CLTimeoutTimer { get; set; }
 
         private bool loading = true;
         public bool Loading
@@ -192,14 +194,40 @@ namespace WeatherApp
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CLTimeoutTimer = new Timer();
+            CLTimeoutTimer.Interval = 5000;
+            CLTimeoutTimer.Tick += new EventHandler(TimerEventProcessor);
+
             WeatherReceiver.InitializeGeoLocation();
             WeatherReceiver.CurrentLocation.watcher.StatusChanged += Watcher_StatusChanged;
+
+            CLTimeoutTimer.Start();
+        }
+
+        private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        {
+            string defaultCity = "chicago";
+            eUnits units = eUnits.IMPERIAL;
+            bool success = WeatherReceiver.Initialize(defaultCity, units);
+            if (success)
+            {
+                UpdateLayout(units);
+                Loading = false;
+
+                //After timeout, disable current location button
+                btnCurrentLocation.Visible = false;
+            }
+            else
+            {
+                lblLoading.Text = "No Connection";
+            }
         }
 
         private void Watcher_StatusChanged(object? sender, GeoPositionStatusChangedEventArgs e)
         {
-            if (e.Status == GeoPositionStatus.Ready)
+            if (e.Status == GeoPositionStatus.Ready && CLTimeoutTimer.Enabled)
             {
+                CLTimeoutTimer.Stop();
                 eUnits units = eUnits.IMPERIAL;
                 bool success = WeatherReceiver.Initialize(units);
                 if (success)
