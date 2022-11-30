@@ -55,3 +55,4 @@ C:\Users\Jacob Mabey\Documents\2022FallClasses\Intro to Software Projects\Weathe
 C:\Users\Jacob Mabey\Documents\2022FallClasses\Intro to Software Projects\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.csproj.CopyComplete
 C:\Users\Jacob Mabey\Documents\2022FallClasses\Intro to Software Projects\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.genruntimeconfig.cache
 C:\Users\Jacob Mabey\Documents\2022FallClasses\Intro to Software Projects\WeatherApp\obj\Debug\net6.0-windows\ref\WeatherApp.dll
+C:\Users\Jacob Mabey\Documents\2022FallClasses\Intro to Software Projects\WeatherApp\obj\Debug\net6.0-windows\WeatherApp.Form1.resources
